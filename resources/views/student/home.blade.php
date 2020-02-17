@@ -32,7 +32,7 @@
 					<td>
 						<div>
 							<!-- <input class= "btn btn-info" type="submit" name="{{$i}}" value="{{$subject[$i]->subject_id}}"> -->
-							<a class="btn btn-xs btn-primary" href="{{route('get-form-evaluation',['id'=>$subject[$i]->subject_id])}}">Bấm vào đây để đánh giá
+							<a class="btn btn-xs btn-primary" href="{{route('form-evaluation',['id'=>$subject[$i]->subject_id])}}">Bấm vào đây để đánh giá
 						</a>
 						</div>
 					</td>

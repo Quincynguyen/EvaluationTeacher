@@ -43,7 +43,7 @@
 					<td> {{$questions[$i]->question_name}}</td>
 					
 					@foreach($answers as $item)
-					 <td > <input type="radio" name="{{$i}}" value="{{ old('$item->answer_id') }}"></td>
+					 <td > <input type="radio" name="{{$i}}" value="{{$item->answer_id}}"></td>
 					 <!-- <input type="radio" name="{{$i}}" value="{{ old('$item->answer_id') }}"> -->
 					@endforeach
 				  </tr>
