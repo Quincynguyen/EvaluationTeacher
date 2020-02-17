@@ -141,7 +141,6 @@ class HomeController extends Controller
 
          for($i = 0; $i <count($subject); $i++){
             $subjectId = $req->$i;
-           
              return redirect()->route('form-evaluation')->with('subjectId',$subjectId);
 
 
