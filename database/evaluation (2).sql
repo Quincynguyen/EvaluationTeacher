@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2020 at 03:23 PM
+-- Generation Time: Feb 17, 2020 at 05:35 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.32
 
@@ -62,6 +62,14 @@ CREATE TABLE `evaluation` (
   `created_at` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `evaluation`
+--
+
+INSERT INTO `evaluation` (`evaluation_id`, `users_id`, `subject_id`, `total_point`, `note`, `created_at`) VALUES
+(26, 1, 1, 64, 'note', '2020-02-17'),
+(27, 1, 1, 80, 'note', '2020-02-17');
+
 -- --------------------------------------------------------
 
 --
@@ -73,6 +81,44 @@ CREATE TABLE `evaluation_result` (
   `question_id` int(11) NOT NULL,
   `answer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `evaluation_result`
+--
+
+INSERT INTO `evaluation_result` (`evaluation_id`, `question_id`, `answer_id`) VALUES
+(26, 4, 1),
+(26, 2, 2),
+(26, 3, 2),
+(26, 5, 2),
+(26, 1, 3),
+(26, 6, 4),
+(26, 7, 5),
+(26, 8, 5),
+(26, 9, 5),
+(26, 10, 5),
+(26, 11, 5),
+(26, 12, 5),
+(26, 13, 5),
+(26, 14, 5),
+(26, 15, 5),
+(26, 16, 5),
+(27, 1, 5),
+(27, 2, 5),
+(27, 3, 5),
+(27, 4, 5),
+(27, 5, 5),
+(27, 6, 5),
+(27, 7, 5),
+(27, 8, 5),
+(27, 9, 5),
+(27, 10, 5),
+(27, 11, 5),
+(27, 12, 5),
+(27, 13, 5),
+(27, 14, 5),
+(27, 15, 5),
+(27, 16, 5);
 
 -- --------------------------------------------------------
 
@@ -396,7 +442,7 @@ ALTER TABLE `answer`
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `evaluation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `evaluation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `faculty`
