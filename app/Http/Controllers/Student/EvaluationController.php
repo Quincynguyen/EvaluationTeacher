@@ -15,8 +15,9 @@ class EvaluationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getFormEvaluation()
+    public function getFormEvaluation(Request $req)
     {
+        // var_dump($req->id);die;
         $questions  = DB::table('question')
        ->where('question.status', '=','1')
        ->get();
@@ -29,15 +30,14 @@ class EvaluationController extends Controller
     }
     public function postFormEvaluation( Request $req)
     {
-
-        $questi  = DB::table('question')
+        $question  = DB::table('question')
        ->where('question.status', '=','1')
        ->get();
 
 
 
        $checkError = false;
-        for($i = 0; $i <count($questi); $i++){
+        for($i = 0; $i <count($question); $i++){
             $answerResutl = $req->$i;
            
               if(!$answerResutl)
@@ -49,7 +49,7 @@ class EvaluationController extends Controller
             }
 
             if( $checkError){
-               return redirect()->back()->withError('message','Update Successful');  
+               return redirect()->route('form-evaluation')->with('error','Fasle');  
             }
 
 

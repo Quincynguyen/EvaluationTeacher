@@ -29,7 +29,13 @@
 					<td>{{$semes}}</td>
 					<td>&nbsp;&nbsp;</td>
 
-					<td><div style="text-align: center; padding-top: 2%"><input class= "btn btn-info" type="submit" name="{{$i}}" value="{{$subject[$i]->subject_id}}"></div></td>
+					<td>
+						<div>
+							<!-- <input class= "btn btn-info" type="submit" name="{{$i}}" value="{{$subject[$i]->subject_id}}"> -->
+							<a class="btn btn-xs btn-primary" href="{{route('get-form-evaluation',['id'=>$subject[$i]->subject_id])}}">Bấm vào đây để đánh giá
+						</a>
+						</div>
+					</td>
 					
 				</tr>
 				@endfor

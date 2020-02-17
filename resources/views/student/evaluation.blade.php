@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('content')
 	
-@if(session()->has('message'))
+@if(session()->has('error'))
     <div class="alert alert-success">
-        {{ session()->get('message') }}
+        {{ session()->get('error') }}
     </div>
 @endif
 	<div class="row content">
@@ -18,65 +18,38 @@
 			<li  style ="float:left; padding-left: 25px;font-style: italic;font-family: initial;font-size: 20px">4 = Tốt</li>
 			<li  style ="float:left; padding-left: 25px;font-style: italic;font-family: initial;font-size: 20px">5 = Xuất sắc</li>
 		</ul>
-		<table class="table table-hover">
+		<table class="table table-hover" style="width: 80%;margin-left: 100px;">
 			<thead>
 				<tr>
-					
 					<th>STT</th>
 					<th>Giảng viên thực hiện hoạt động giảng dạy như sau:</th>
 					<th>Mức độ thực hiện
+						<tr>
+							<td></td>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+						</tr>
 					</th>
 				</tr>
 			</thead>
 			<tbody>
 				@for($i = 0; $i < count($questions) ; $i++)
-				
-
-				 
-				
 				<tr>
-					
 					<td> {{$questions[$i]->question_id}}</td>
 					<td> {{$questions[$i]->question_name}}</td>
-
 					
-
 					@foreach($answers as $item)
-					 <td ><input name="{{$i}}" type="radio" value="{{$item->answer_id}}"></td>
+					 <td > <input type="radio" name="{{$i}}" value="{{ old('$item->answer_id') }}"></td>
+					 <!-- <input type="radio" name="{{$i}}" value="{{ old('$item->answer_id') }}"> -->
 					@endforeach
 				  </tr>
-					
-
-					
-					
 				@endfor
-
 			</tbody>
 		</table>
-		<!-- <table class="table table-hover" style ="width: 75%;margin-left: 200px;margin-top: 50px;">
-			<thead>
-				<tr>
-					<th>STT</th>
-					<th>Giảng viên thực hiện hoạt động giảng dạy như sau:</th>
-					<th>1</th>
-					<th>2</th>
-					<th>3</th>
-					<th>4</th>
-					<th>5</th>
-				</tr>
-			</thead>
-			<tbody>
-				
-				<tr>qq
-					<td ><input type="radio" name="input" value="1"></td>
-					<td ><input type="radio" name="input" value="2"></td>
-					<td ><input type="radio" name="input" value="3"></td>
-					<td ><input type="radio" name="input" value="4"></td>
-					<td ><input type="radio" name="input" value="5"></td>
-				</tr>
-				
-			</tbody>
-		</table> -->
 		<div style="display: inline-flex; padding-left: 300px; width: 100%">
 			Ý kiến góp ý khác: &nbsp;
 			<textarea name="cmt" style="overflow: auto; width: 60%" >
