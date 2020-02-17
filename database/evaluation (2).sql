@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2020 at 04:56 PM
+-- Generation Time: Feb 17, 2020 at 03:23 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.32
 
@@ -50,15 +50,28 @@ INSERT INTO `answer` (`answer_id`, `answer_name`, `status`, `created_at`, `point
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `evaluation`
+--
+
+CREATE TABLE `evaluation` (
+  `evaluation_id` int(11) NOT NULL,
+  `users_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `total_point` int(11) DEFAULT 0,
+  `note` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` date DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `evaluation_result`
 --
 
 CREATE TABLE `evaluation_result` (
-  `users_id` int(11) NOT NULL,
+  `evaluation_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
-  `answer_id` int(11) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `created_at` date DEFAULT current_timestamp()
+  `answer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -291,13 +304,20 @@ ALTER TABLE `answer`
   ADD PRIMARY KEY (`answer_id`);
 
 --
+-- Indexes for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  ADD PRIMARY KEY (`evaluation_id`),
+  ADD KEY `users_id` (`users_id`),
+  ADD KEY `subject_id` (`subject_id`);
+
+--
 -- Indexes for table `evaluation_result`
 --
 ALTER TABLE `evaluation_result`
-  ADD PRIMARY KEY (`users_id`,`question_id`,`subject_id`),
+  ADD PRIMARY KEY (`evaluation_id`,`question_id`),
   ADD KEY `question_id` (`question_id`),
-  ADD KEY `answer_id` (`answer_id`),
-  ADD KEY `subject_id` (`subject_id`);
+  ADD KEY `answer_id` (`answer_id`);
 
 --
 -- Indexes for table `faculty`
@@ -373,6 +393,12 @@ ALTER TABLE `answer`
   MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  MODIFY `evaluation_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
@@ -413,13 +439,19 @@ ALTER TABLE `users`
 --
 
 --
+-- Constraints for table `evaluation`
+--
+ALTER TABLE `evaluation`
+  ADD CONSTRAINT `evaluation_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `evaluation_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`);
+
+--
 -- Constraints for table `evaluation_result`
 --
 ALTER TABLE `evaluation_result`
-  ADD CONSTRAINT `evaluation_result_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`),
-  ADD CONSTRAINT `evaluation_result_ibfk_2` FOREIGN KEY (`answer_id`) REFERENCES `answer` (`answer_id`),
-  ADD CONSTRAINT `evaluation_result_ibfk_3` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`),
-  ADD CONSTRAINT `evaluation_result_ibfk_4` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `evaluation_result_ibfk_1` FOREIGN KEY (`evaluation_id`) REFERENCES `evaluation` (`evaluation_id`),
+  ADD CONSTRAINT `evaluation_result_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`),
+  ADD CONSTRAINT `evaluation_result_ibfk_3` FOREIGN KEY (`answer_id`) REFERENCES `answer` (`answer_id`);
 
 --
 -- Constraints for table `teacher`
