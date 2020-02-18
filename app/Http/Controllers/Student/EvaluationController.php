@@ -33,14 +33,12 @@ class EvaluationController extends Controller
         $answers  = DB::table('answer')
        ->where('answer.status', '=','1')
        ->get();
-        return view('student.evaluation')->with('questions', $questions)->with('answers', $answers);
+        return view('student.evaluation')->with(['questions'=> $questions,'subjectId'=>$subjectId,'answers' => $answers]);
 
     }
     public function postFormEvaluation( Request $req)
     {
 
-
-        dd($this->subjectId);
 
         $question  = DB::table('question')
        ->where('question.status', '=','1')
@@ -58,7 +56,7 @@ class EvaluationController extends Controller
               }
           }
             if( $checkError){
-               return redirect()->route('form-evaluation')->with('error','Fasle');  
+               return redirect()->route('form-evaluation')->with('error','Bạn cần chọn đầy đủ câu trả lời');  
             }
 
             // pass
@@ -67,7 +65,7 @@ class EvaluationController extends Controller
 
             //  note get form , created_at now, total_point = sum answer
        
-
+          dd($req->all());
          $evaluation = Evaluation::create(['evaluation_id' => null,'users_id' => Auth::user()->id,'subject_id' => $this->subjectId ,'total_point' => 0,'note' => 'note','created_at' => Carbon\Carbon::now('Asia/Ho_Chi_Minh')]);
         
           $evaluationId = $evaluation->id;
