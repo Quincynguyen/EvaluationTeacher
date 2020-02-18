@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('content')
 	
-@if(session()->has('error'))
-    <div class="alert alert-success">
-        {{ session()->get('error') }}
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
     </div>
 @endif
 	<div class="row content">
@@ -27,11 +27,9 @@
 						<tr>
 							<td></td>
 							<td></td>
-							<td>1</td>
-							<td>2</td>
-							<td>3</td>
-							<td>4</td>
-							<td>5</td>
+							@foreach($answers as $item)
+							<td>{{$item->answer_id}}</td>
+							@endforeach
 						</tr>
 					</th>
 				</tr>
@@ -55,6 +53,7 @@
 			<textarea name="cmt" style="overflow: auto; width: 60%" >
 			</textarea>
 		</div>
+		<input type="hidden" value="{{$subjectId}}" name="id">
 		<div style="text-align: center; padding-top: 2%"><input class= "btn btn-info" type="submit" name="submit" value="Gửi"></div>
 	</div>
 	</form>
