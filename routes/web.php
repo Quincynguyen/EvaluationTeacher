@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-include('admin.php');
 Auth::routes();
 Route::namespace('Student')->prefix('student')->group(function () {
 	Route::get('/login', 'StudentLoginController@showLoginForm')->name('student-login');
@@ -28,3 +24,4 @@ Route::namespace('Student')->prefix('student')->group(function () {
   }); 
  	
 });
+include('admin.php');

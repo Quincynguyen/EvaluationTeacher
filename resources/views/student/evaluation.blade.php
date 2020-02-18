@@ -50,7 +50,7 @@
 		</table>
 		<div style="display: inline-flex; padding-left: 300px; width: 100%">
 			Ý kiến góp ý khác: &nbsp;
-			<textarea name="cmt" style="overflow: auto; width: 60%" >
+			<textarea name="note" style="overflow: auto; width: 60%" >
 			</textarea>
 		</div>
 		<input type="hidden" value="{{$subjectId}}" name="id">

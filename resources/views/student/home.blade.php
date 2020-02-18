@@ -1,6 +1,12 @@
 @extends('layouts.master')
 @section('title', 'Phần mềm đánh giá giảng viên')
 @section('content')
+			@if(Session::has('success'))
+              <div class="alert alert-success" style="height: 50px;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>{{Session::get('success')}}</strong> 
+              </div>
+             @endif
 <h2 style="text-align: center;color: green;">Lấy ý kiến phản hồi từ người học đối với giảng viên</h2>
 		<p style="text-align: justify ;font-size: 18px;font-style: italic;font-family: initial;margin-left: 250px;margin-top: 50px;">Để cải thiện và nâng cao chất lượng dạy và học, đề nghị các anh/chị học viên, sinh viên cho ý kiến về các nội dung dưới đây. <br>Thông tin về người cho ý kiến sẽ được hoàn toàn giữ bí mật.</p>
 		<form action="{{route('post-subject')}}" method="POST" role="form">

@@ -39,7 +39,6 @@ class EvaluationController extends Controller
     public function postFormEvaluation( Request $req)
     {
 
-
         $question  = DB::table('question')
        ->where('question.status', '=','1')
        ->get();
@@ -65,8 +64,8 @@ class EvaluationController extends Controller
 
             //  note get form , created_at now, total_point = sum answer
        
-          dd($req->all());
-         $evaluation = Evaluation::create(['evaluation_id' => null,'users_id' => Auth::user()->id,'subject_id' => $this->subjectId ,'total_point' => 0,'note' => 'note','created_at' => Carbon\Carbon::now('Asia/Ho_Chi_Minh')]);
+          // dd($req->all());
+         $evaluation = Evaluation::create(['evaluation_id' => null,'users_id' => Auth::user()->id,'subject_id' => $req->id ,'total_point' => 0,'note' => $req->note,'created_at' => Carbon\Carbon::now('Asia/Ho_Chi_Minh')]);
         
           $evaluationId = $evaluation->id;
           $answerResutl = 0;
@@ -91,6 +90,7 @@ class EvaluationController extends Controller
            ));
 
            EvaluationResult::insert($finalArray);
+          return redirect()->route('home')->with('success','Cảm ơn bạn đã đánh giá');
            //  success
 
 }

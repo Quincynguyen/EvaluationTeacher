@@ -62,14 +62,15 @@ class HomeController extends Controller
            $resultSemester = ($year -1).'HK1';
         }
       }
-      
-      
+
       $subject = DB::table('users_subject')
               ->join('subject', 'users_subject.subject_id', '=', 'subject.subject_id')
           ->join('teacher', 'users_subject.teacher_code', '=', 'teacher.teacher_code')
+          ->leftJoin('evaluation','subject.subject_id', '=', 'evaluation.subject_id')
             
           ->where([
               ['users_subject.users_id', '=', Auth::user()->id],
+              ['evaluation.subject_id', '=',null],
               ['users_subject.semester', '=', $resultSemester],
           ])
            ->select('users_subject.users_id', 'subject.subject_id', 'subject.subject_code','subject.subject_name','teacher.teacher_name','users_subject.semester')
@@ -79,7 +80,7 @@ class HomeController extends Controller
     }
     public function getLogout() {
    	Auth::logout();
-   	return redirect('/login');
+   	return redirect()->route('student-login');
 	}
   public function postSubject(Request $req)
   {
