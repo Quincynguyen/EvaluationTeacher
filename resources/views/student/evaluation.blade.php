@@ -11,7 +11,7 @@
 		 @csrf
 		<h2 style="text-align: center;color: green;">Lấy ý kiến phản hồi từ người học đối với giảng viên</h2>
 		<p style =" text-align: center; font-size: 18px;">Hãy chọn các nút tương ứng theo các mức độ đánh giá từ 1 - 5 như sau: </p>
-		<ul class ="title" style ="color:orange;list-style-type: none;padding-top: 20px;">
+		<ul class ="title" style ="color:orange;list-style-type: none;padding-top: 20px;margin-left: 130px;">
 			<li style ="float:left; margin-left: 500px;font-style: italic;font-family: initial;font-size: 20px;">1 = Cần cải thiện</li>
 			<li  style ="float:left; padding-left: 25px;font-style: italic;font-family: initial;font-size: 20px">2 = Đạt</li>
 			<li  style ="float:left; padding-left: 25px;font-style: italic;font-family: initial;font-size: 20px">3 = Khá</li>
@@ -21,6 +21,11 @@
 		<table class="table table-hover" style="width: 80%;margin-left: 100px;">
 			<thead>
 				<tr>
+					<th>Giảng viên đánh giá:<span style="color: #2e6da4;"> {{$teacher->teacher_name}}</span><br><br>
+					Môn học đánh giá: <span style="color: #2e6da4;">{{$subject->subject_name}}</span></th>
+				</tr>
+				<tr>
+					
 					<th>STT</th>
 					<th>Giảng viên thực hiện hoạt động giảng dạy như sau:</th>
 					<th>Mức độ thực hiện

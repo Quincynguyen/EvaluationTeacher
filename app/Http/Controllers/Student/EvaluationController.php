@@ -29,11 +29,13 @@ class EvaluationController extends Controller
         $questions  = DB::table('question')
        ->where('question.status', '=','1')
        ->get();
+       $subject = DB::table('subject')->where('subject_id',$subjectId)->first();
+       $teacher = DB::table('teacher')->first();
 
         $answers  = DB::table('answer')
        ->where('answer.status', '=','1')
        ->get();
-        return view('student.evaluation')->with(['questions'=> $questions,'subjectId'=>$subjectId,'answers' => $answers]);
+        return view('student.evaluation')->with(['questions'=> $questions,'subjectId'=>$subjectId,'answers' => $answers,'subject'=>  $subject,'teacher'=>$teacher]);
 
     }
     public function postFormEvaluation( Request $req)
