@@ -18,11 +18,11 @@
 			<li  style ="float:left; padding-left: 25px;font-style: italic;font-family: initial;font-size: 20px">4 = Tốt</li>
 			<li  style ="float:left; padding-left: 25px;font-style: italic;font-family: initial;font-size: 20px">5 = Xuất sắc</li>
 		</ul>
-		<table class="table table-hover" style="width: 80%;margin-left: 100px;">
+		<table class="table table-dark" style="width: 80%;margin-left: 100px;">
 			<thead>
 				<tr>
-					<th>Giảng viên đánh giá:<span style="color: #2e6da4;"> {{$teacher->teacher_name}}</span><br><br>
-					Môn học đánh giá: <span style="color: #2e6da4;">{{$subject->subject_name}}</span></th>
+					<th>Giảng viên đánh giá:  <span style="color: #2e6da4;">{{$teacherAndClass->teacher_name}}</span><br><br>
+					Môn học đánh giá: <span style="color: #2e6da4;">{{$teacherAndClass->subject_name}}</span></th>
 				</tr>
 				<tr>
 					
@@ -58,7 +58,7 @@
 			<textarea name="note" style="overflow: auto; width: 60%" >
 			</textarea>
 		</div>
-		<input type="hidden" value="{{$subjectId}}" name="id">
+		<input type="hidden" value="{{$evaluationId}}" name="id">
 		<div style="text-align: center; padding-top: 2%"><input class= "btn btn-info" type="submit" name="submit" value="Gửi"></div>
 	</div>
 	</form>

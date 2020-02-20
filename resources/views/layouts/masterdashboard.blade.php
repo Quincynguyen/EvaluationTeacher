@@ -33,7 +33,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-     <div class="sidebar-brand-text mx-3">ADMIN  <sup></sup></div>
+     <div class="sidebar-brand-text mx-3">Quản Trị viên <sup></sup></div>
       </a>
 
       <!-- Divider -->
@@ -43,7 +43,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{route('admin-dashboard')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Trang Quản Trị</span></a>
       </li>
   
       <!-- Divider -->
@@ -56,31 +56,26 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
          <i class="fas fa-users"></i>
-          <span>Thống kê</span>
+          <span>Quản Lý Sinh Viên</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Thống kê</h6>
-            <a class="collapse-item" href="#">Thống kê</a>
+            <a class="collapse-item" href="{{route('admin-students')}}">Danh sách sinh viên <br>chưa đánh giá</a>
+            <a class="collapse-item" href="{{route('admin-dashboard')}}">Thống kê sinh viên <br> tham gia đánh giá</a>
           </div>
         </div>
       </li>
     
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link" href="{{route('admin-subject')}}">
         <i class="fas fa-laptop"></i>
-          <span>Thống kê</span>
+          <span>Quản lý lớp học</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header"></h6>
-            <a class="collapse-item" href="#"> Thống kê</a>
-            <a class="collapse-item" href="#">Thống kê</a>
-            
-          </div>
         </div>
       </li>
       <li class="nav-item">
@@ -164,9 +159,7 @@
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
                 <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
               </a>
             </li>
 
@@ -175,7 +168,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><!-- {{ auth()->user()->name }} --></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào {{Auth()->user()->name}}</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -212,7 +205,7 @@
         <footer style ="position: relative;top:700px;" class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; english3.ml 2019</span>
+            <span>Phầm mềm được phát triển bởi Quynh NT</span>
           </div>
         </div>
       </footer>
