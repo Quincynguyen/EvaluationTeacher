@@ -20,7 +20,8 @@
   			<td><a class ="btn btn-info" href="{{route('admin-class',['id'=>$data->subject_id])}}">Danh sách lớp học</a></td>
   		</tr>
   	   @endforeach
-    
+   
   	</tbody>
   </table>
+   {{$subject->links()}}
  @endsection

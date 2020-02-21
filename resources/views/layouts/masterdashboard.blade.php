@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="{{url('')}}/css/sb-admin-2.min.css" rel="stylesheet">
 
+
 </head>
 
 <body id="page-top">
@@ -51,7 +52,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Menu
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -79,9 +80,9 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" >
-         <i class="far fa-file-alt"></i>
-          <span>Thống kê</span>
+        <a class="nav-link" href="{{route('admin-question')}}" >
+          <i class="fas fa-question"></i>
+          <span>Quản lý câu hỏi đánh giá</span>
         </a>
       </li>
 
@@ -97,6 +98,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link" href="#">
+         <i class="far fa-file-alt"></i>
           <i class="fas fa-question"></i>
          <span>Thống kê</span></a>
         </a>
@@ -109,7 +111,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-sign-out-alt"></i>
-          <span>Logout</span></a>
+          <span>Đăng xuất</span></a>
       </li>
 
       <!-- Divider -->
@@ -169,26 +171,22 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào {{Auth()->user()->name}}</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" src="{{url('')}}/img/quynh.jpg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
+                  Thông tin
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
+                  Đổi mật khẩu
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  <a href="#">Logout</a>
+                  <a href="#">Đăng xuất</a>
                 </a>
               </div>
             </li>
@@ -227,7 +225,6 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <a class="btn btn-primary" href="">Logout</a>

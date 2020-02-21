@@ -8,7 +8,6 @@
   <!-- <title>Thống kê số lượng sinh viên đã tham gia đánh giá</title> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <style type="text/css">
    .box{
     width:800px;
@@ -43,7 +42,7 @@
    {
     var data = google.visualization.arrayToDataTable(analytics);
     var options = {
-     title : 'Percentage of Male and Female Employee'
+     title : 'Tỉ lệ sinh viên tham gia đánh giá'
     };
     var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
     chart.draw(data, options);
@@ -53,14 +52,15 @@
  <body>
   <br />
   <div class="container">
-   <h3 align="center">Biểu đồ thông kê số lượng sinh viên tham gia đánh giá</h3><br />
+   <h3 align="center" style="font-style: all;color: #4e73df">Biểu đồ thông kê số lượng sinh viên tham gia đánh giá</h3><br>
+   <div class="panel-heading" style="background-color: #1EAE98;border-radius: 5px;margin-bottom:0px;padding: 30px;width: 1100px;">
+    </div>
    
    <div class="panel panel-default">
     <div class="panel-heading">
-     <h3 class="panel-title">Tỉ lệ sinh viên tham gia đanh giá </h3>
     </div>
-    <div class="panel-body" align="center">
-     <div id="pie_chart" style="width:750px; height:450px;">
+    <div class="panel-body" align="center" style="border-bottom-right-radius: all;color: #f6c23e">
+     <div id="pie_chart" style="width:1100px; height:450px;margin-right: 100px;">
 
      </div>
     </div>

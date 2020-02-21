@@ -12,7 +12,7 @@ class ListSubjectController extends Controller
 {
   public function getAllSubject(Request $req)
   {
-       $subject = DB::table('subject')->get();
+       $subject = DB::table('subject')->paginate(10);
        return view('admin.listsubject')->with('subject',$subject);
   }
   public function getListClass(Request $req)

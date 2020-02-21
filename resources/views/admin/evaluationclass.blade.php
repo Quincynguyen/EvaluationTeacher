@@ -5,7 +5,7 @@
   <!-- <title>Thống kê số lượng sinh viên đã tham gia đánh giá</title> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
   <style type="text/css">
    .box{
     width:800px;
@@ -48,28 +48,27 @@
   
   
   <div class="container">
-   <h3 align="center" style="color: #224abe ">Biểu đồ thông kê đánh giá lớp học</h3><br />
+   <h3 align="center" style="color: #224abe ">Biểu đồ thông kê đánh giá lớp học</h3>
    
    <div class="panel panel-default">
-    <div class="panel-heading">
-     <h3 class="panel-title">Tỉ lệ đánh giá lớp học</h3>
-       <h3 class="panel-title" style="margin-left:  800px;margin-right: 0x;font-size: 15px;">Giảng viên:   <span style="color: #224abe ">{{$classInfo->teacher_name}} </span></h3> <br>
-        <h3 class="panel-title" style="margin-left:  800px;margin-right: 0x;font-size: 15px;">Môn học:   <span style="color: #224abe ">{{$classInfo->subject_name}} </span></h3><br>
-         <h3 class="panel-title" style="margin-left:  800px;margin-right: 0x;font-size: 15px;">Tổng sinh viên của lớp:   <span style="color: #224abe ">{{$classInfo->total_student_in_class}} </span></h3><br>
-         <h3 class="panel-title" style="margin-left:  800px;margin-right: 0x;font-size: 15px;">Tổng sinh viên tham gia đánh giá:   <span style="color: #224abe ">{{$classInfo->total_student_is_feedback_by_class}} </span></h3>
+    <div class="panel-heading" style="background-color: #1EAE98;border-radius: 10px;margin-bottom:0px;padding:10px;">
+       <h3 class="panel-title" style="margin-left:  800px;margin-right: 0x;font-size: 15px;color: #000;">Giảng viên:   <span style="color: #FFF ">{{$classInfo->teacher_name}} </span></h3>
+       <h3 class="panel-title" style="margin-left:  800px;margin-right: 0x;font-size: 15px;color: #000;">Môn học:   <span style="color: #FFF ">{{$classInfo->subject_name}} </span></h3>
+       <h3 class="panel-title" style="margin-left:  800px;margin-right: 0x;font-size: 15px;color: #000;">Tổng sinh viên của lớp:   <span style="color: #FFF ">{{$classInfo->total_student_in_class}} </span></h3>
+       <h3 class="panel-title" style="margin-left:  800px;margin-right: 0x;font-size: 15px;color: #000;">Tổng sinh viên tham gia đánh giá:   <span style="color: #FFF ">{{$classInfo->total_student_is_feedback_by_class}} </span></h3>
          
     </div>
     <div class="panel-body" align="center" style="position: relative;">
   
-     <div id="pie_chart" style="width :50%; height:350px; margin: 10px;float:left;position: absolute;">
+     <div id="pie_chart" style="width :50%; height:490px; margin: 10px;float:left;position: absolute;margin-top:0px">
       
      </div>
      <div class="panel-body" align="center">
-  
-     <div id="pie_chart1" style="width:50%; height:350px; float: right;margin-top: 0px">
-      
+
+       <div id="pie_chart1" style="width:50%; height:500px; float: right;margin-top: 0px">
+        
+       </div>
      </div>
-    </div>
    </div>
    
   </div>
