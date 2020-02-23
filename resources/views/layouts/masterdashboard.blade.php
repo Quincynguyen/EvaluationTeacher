@@ -97,16 +97,16 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('admin-listteacher')}}">
          <i class="far fa-file-alt"></i>
           <i class="fas fa-question"></i>
          <span>Thống kê</span></a>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{route('admin-getallpointbyteacher')}}">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Thống kê</span></a>
+          <span>Thống ke GV</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">

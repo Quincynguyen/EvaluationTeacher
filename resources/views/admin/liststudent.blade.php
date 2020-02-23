@@ -12,14 +12,17 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php  $i = 0  ?>
 		@foreach($result_student_not_feedback as $data)
+		
+		<?php  $i++  ?>
 		<tr style="color: black;">
-			<td>{{$data->id}}</td>
+			<td>{{$i}}</td>
 			<td>{{$data->username}}</td>
 			<td>{{$data->name}}</td>
 			<td><a class ="btn btn-info" href="">Nhắc nhở</a></td>
 		</tr>
 		@endforeach
 	</tbody>
-</table>
+</table> 
 @endsection

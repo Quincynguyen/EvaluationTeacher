@@ -1,5 +1,11 @@
 @extends('layouts.masterdashboard')
 @section('content')
+@if(Session::has('success'))
+<div class="alert alert-success" style="height: 50px;">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>{{Session::get('success')}}</strong> 
+</div>
+@endif
 <h3 align="center" style="color: #224abe ">Danh sách tất cả các câu hỏi đánh giá</h3><br />
  <a class="btn btn-primary" data-toggle="modal" href='#modal-id' style="margin-bottom: 20px;">Thêm mới câu hỏi</a>
  <div class="modal fade" id="modal-id">
@@ -9,12 +15,12 @@
          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
        </div>
        <div class="modal-body">
-         <form action="" method="POST" role="form">
+         <form action="{{route('admin-addquestion')}}" method="POST" role="form">
           <legend style="color: red;">Thêm mới câu hỏi</legend>
           @csrf
           <div class="form-group">
             <label for="">Nội dung câu hỏi</label>
-            <input type="text" name="name" class="form-control" id="name" placeholder="Nhập nội dung câu hỏi" required="text">
+            <input type="text" name="question_name" class="form-control" id="question_name" placeholder="Nhập nội dung câu hỏi" required="text">
             @if($errors->has('question_name'))
             {{$errors->first('question_name')}}
             @endif
@@ -64,7 +70,7 @@
                       <div class="form-group">
                         <legend style="color: red;">Chỉnh sửa nội dung câu hỏi</legend>
                          <div class="form-group">
-                            <input type="" name="question_id" class="form-control" id="question_id" placeholder="" value = "{{$data->question_id}}" >
+                            <input type=""class="form-control" id="{{$data->question_id}}" placeholder="" value = "{{$data->question_id}}" >
                         </div>
                          <div class="form-group">
                           <input type="text" name="question_name" class="form-control" id="question_name" value = "{{$data->question_name}}" required>
@@ -79,11 +85,12 @@
                     </div>
                   </div>
           </div>
-           <a onclick="return confirm('Are you sure??')" href=""><i style="color: red" class="far fa-trash-alt"></i></a>
+           <a onclick="return confirm('Bạn có muốn xóa không?')" href="{{route('admin-deletequestion',['id'=>$data->question_id])}}"><i style="color: red" class="far fa-trash-alt"></i></a>
         </td>
   		</tr>
   	   @endforeach
    
   	</tbody>
   </table>
+  {{$question->links()}}
  @endsection
