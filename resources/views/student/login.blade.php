@@ -11,6 +11,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
+
 	<div style ="background-image: url('{{ asset('student/bg-head.png') }}');" class ="row">
 		<img style ="padding-left: 100px; height: 130px;" src="{{ asset('student/logo.jpg') }}">
 	</div>
@@ -24,6 +25,15 @@
 	</div>
 	<div style ="margin-top: 80px; border:solid 0.5px #ccc;padding: 30px;border-radius: 5px;" class="container">
 		<div class="row">
+			@if (session('alert-success'))
+                <p class="alert alert-danger">{{ session('alert-success') }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+            @endif
+            @if (session('error-login'))
+            <div class="alert alert-danger">
+            	{{ session('error-login') }}
+            </div>
+            @endif
+           
 			<div class="col-md-6 col-md-offset-3">
 				<form action="{{route('student-login')}}" method="POST" role="form">
 					<legend>Đăng nhập</legend>

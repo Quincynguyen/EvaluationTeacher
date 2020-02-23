@@ -9,6 +9,8 @@ use DB;
 use Auth;
 use Validator;
 use Carbon;
+use \App\User;
+use App\Http\Requests\ChangePasswordRequest;
 class HomeController extends Controller
 {
      public function __construct() {
@@ -63,23 +65,26 @@ class HomeController extends Controller
         }
       }
       
-      
-      $subject = DB::table('users_subject')
-              ->join('subject', 'users_subject.subject_id', '=', 'subject.subject_id')
-          ->join('teacher', 'users_subject.teacher_code', '=', 'teacher.teacher_code')
+
+      $subject = DB::table('evaluations')
+              ->join('class', 'evaluations.class_id', '=', 'class.class_id')
+          ->join('subject', 'class.subject_id', '=', 'subject.subject_id')
+               ->join('teacher', 'class.teacher_id', '=', 'teacher.teacher_id')
+          ->leftJoin('evaluations_detail','evaluations.evaluation_id', '=', 'evaluations_detail.evaluation_id')
             
           ->where([
-              ['users_subject.users_id', '=', Auth::user()->id],
-              ['users_subject.semester', '=', $resultSemester],
+              ['users_id', '=', Auth::user()->id],
+              ['evaluations_detail.evaluation_id', '=',null],
+              ['class.semester', '=', $resultSemester],
           ])
-           ->select('users_subject.users_id', 'subject.subject_id', 'subject.subject_code','subject.subject_name','teacher.teacher_name','users_subject.semester')
+           ->select('users_id', 'evaluations.evaluation_id', 'subject.subject_id','subject.subject_code','subject.subject_name','teacher.teacher_name','class.semester')
             ->get();
-      return view('student.home')->with('subject', $subject)->with('semes', $semes);;
+      return view('student.home')->with('subject', $subject)->with('semes', $semes);
       // return view('student.home');
     }
     public function getLogout() {
    	Auth::logout();
-   	return redirect('/login');
+   	return redirect()->route('student-login');
 	}
   public function postSubject(Request $req)
   {
@@ -127,26 +132,53 @@ class HomeController extends Controller
            $resultSemester = ($year -1).'HK1';
         }
       }
-       $subject = DB::table('users_subject')
-              ->join('subject', 'users_subject.subject_id', '=', 'subject.subject_id')
-          ->join('teacher', 'users_subject.teacher_code', '=', 'teacher.teacher_code')
+      
+     
+       $subject = DB::table('evaluations')
+              ->join('class', 'evaluations.class_id', '=', 'class.class_id')
+          ->join('subject', 'class.subject_id', '=', 'subject.subject_id')
+               ->join('teacher', 'class.teacher_id', '=', 'teacher.teacher_id')
+          ->leftJoin('evaluations_detail','evaluations.evaluation_id', '=', 'evaluations_detail.evaluation_id')
             
           ->where([
-              ['users_subject.users_id', '=', Auth::user()->id],
-              ['users_subject.semester', '=', $resultSemester],
+              ['users_id', '=', Auth::user()->id],
+              ['evaluations_detail.evaluation_id', '=',null],
+              ['class.semester', '=', $resultSemester],
           ])
-           ->select('users_subject.users_id', 'subject.subject_id', 'subject.subject_code','subject.subject_name','teacher.teacher_name','users_subject.semester')
+           ->select('users_id', 'evaluations.evaluation_id', 'subject.subject_id','subject.subject_code','subject.subject_name','teacher.teacher_name','class.semester')
             ->get();
 
 
          for($i = 0; $i <count($subject); $i++){
-            $subjectId = $req->$i;
-             return redirect()->route('form-evaluation')->with('subjectId',$subjectId);
+            $evaluation_id = $req->$i;
+             return redirect()->route('form-evaluation')->with('evaluation_id',$evaluation_id);
+         }
+  }
+  public function getChangePass()
+  {
+     return view('student.changepass')->with(
+            ['id' => Auth::user()->id]
+        );
+  }
+  public function changePass(ChangePasswordRequest $req)
+  {
+       if(Auth::Check())
+        {  
+            if(\Hash::check($req->current_password,Auth::User()->password))
+               {
+          $user = User::find(Auth::user()->id)->update(["password"=> bcrypt($req->password)]);      
+        }
+        else{
+          return redirect()->back()->with('alert-danger','Mật khẩu không chính xác!');
+        }
+      }
+        return redirect()->route('student-login')->with('alert-success','Mật khẩu đã thay đổi thành công !');
 
-
-  
-
-    }
+  }
+  public function getListQuestion()
+  {
+      $listquestion = DB::table('question')->get();
+      return view('student.listquestion')->with('listquestion',$listquestion); 
   }
 
   // SELECT us.users_id,s.subject_id,s.subject_code,s.subject_name,us.semester FROM users_subject as us inner join subject as s on us.subject_id = s.subject_id WHERE users_id = 1 and us.semester = '2019HK1'

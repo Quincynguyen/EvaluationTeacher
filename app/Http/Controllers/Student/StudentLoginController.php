@@ -19,15 +19,22 @@ class StudentLoginController extends Controller
     }
     public function login(Request $request)
     {
+
         if (Auth::attempt($request->only('username','password'))) {
-            return redirect()->route('home');
+            if(Auth::user()->role == 'ADMIN')
+            {
+                return redirect()->route('admin-dashboard');
+            }else{
+                return redirect()->route('home');
+            }
+            
         }
         else{
-            return redirect()->back()->with('error','Username hoặc mật khẩu không đúng');
+            return redirect()->back()->with('error-login','Username hoặc mật khẩu không đúng');
         }
     }
     public function getLogout() {
         Auth::logout();
-        return redirect('/login');
+        return redirect()->route('student-login');
     }
 }

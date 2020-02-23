@@ -10,22 +10,26 @@
 	<script src="{{url('')}}/js/evaluation.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
-<body>
+<body >
 <div style ="background-image: url('{{ asset('student/bg-head.png') }}');" class ="row">
 		<img style ="padding-left: 100px; height: 130px;" src="{{ asset('student/logo.jpg') }}">
 	</div>
 	<div class ="row header">
+		<ul style="">
+			 
+		</ul>
 		<ul style ="background-color: #2e6da4;list-style-type: none;width: 100%;height: 50px;">
-	      <li style=" float:left;padding-left: 160px;padding-top: 15px;font-style: bold;"><a style="color:#FFF;" class="active" href="#"><i class="fas fa-home"></i> TRANG CHỦ</a></li>
-	      <li style=" float:left;padding-left: 160px;padding-top: 15px;font-style: bold;"><a style="color:#FFF;" href="#"><i class="fas fa-newspaper"></i>  PHIẾU ĐĂNG KÝ ĐÁNH GIÁ</a></li>
-	      <li style=" float:left;padding-left: 160px;padding-top: 15px;"><a style="color:#FFF;" href="#"> <i class="fas fa-laptop-code"></i>  KHÓA HỌC CỦA TÔI</a></li>
-	      <li style=" float:left;padding-left: 160px;padding-top: 15px;"><a style="color:#FFF;" href="#"><i class="fas fa-book-reader"></i>  HƯỚNG DẪN ĐĂNG KÝ ĐÁNH GIÁ</a></li>
-	       <li class="nav navbar-nav navbar-right dropdown">
-					<a style="color:#FFF;margin-right: 120px;"href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}}<b class="caret"></b></a>
+	      <li style=" float:left;padding-left: 160px;padding-top: 15px;font-style: bold;"><a style="color:#FFF;" class="active" href="{{route('home')}}"><i class="fas fa-home"></i> TRANG CHỦ</a></li>
+	      <li style=" float:left;padding-left: 160px;padding-top: 15px;font-style: bold;"><a style="color:#FFF;" href="{{route('question')}}"><i class="fas fa-newspaper"></i>  CÁC CÂU HỎI ĐÁNH GIÁ</a></li>
+	      <li class="nav navbar-nav navbar-right dropdown">
+					<a style="color:#FFF;margin-right: 250px;"href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}}<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a  href="">Đăng xuất</a></li>
+						<li><a  href="{{route('change-pass')}}">Đổi mật khẩu</a></li>
+						<li><a  href="{{route('logout')}}">Đăng xuất</a></li>
 					</ul>
 				</li>
+	      <li style=" float:left;padding-left: 160px;padding-top: 15px;"><a style="color:#FFF;" href="#"><i class="fas fa-book-reader"></i>  HƯỚNG DẪN ĐĂNG KÝ ĐÁNH GIÁ</a></li>
+	      
    		 </ul>
 	</div>
 	<div class ="row header" style="width: 100%;margin-left: 100px">
