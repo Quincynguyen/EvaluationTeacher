@@ -99,14 +99,13 @@
       <li class="nav-item">
         <a class="nav-link" href="{{route('admin-listteacher')}}">
          <i class="far fa-file-alt"></i>
-          <i class="fas fa-question"></i>
-         <span>Thống kê</span></a>
+         <span>Thống kê đánh giá Giảng Viên</span></a>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('admin-getallpointbyteacher')}}">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Thống ke GV</span></a>
+          <i class="far fa-file-alt"></i>
+          <span>Liệt kê đánh giá Giảng Viên</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
@@ -170,7 +169,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Xin chào {{Auth()->user()->name}}</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                 <img class="img-profile rounded-circle" src="{{url('')}}/img/quynh.jpg">
               </a>
               <!-- Dropdown - User Information -->
