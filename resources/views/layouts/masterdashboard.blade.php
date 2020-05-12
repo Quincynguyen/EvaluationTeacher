@@ -108,6 +108,11 @@
           <span>Liệt kê đánh giá Giảng Viên</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{route('admin-import')}}">
+          <i class="far fa-file-alt"></i>
+          <span>Thêm Dữ Liệu</span></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#">
           <i class="fas fa-sign-out-alt"></i>
           <span>Đăng xuất</span></a>

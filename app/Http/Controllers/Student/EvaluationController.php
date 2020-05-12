@@ -28,17 +28,15 @@ class EvaluationController extends Controller
 
      $teacherAndClass = DB::table('evaluations')
               ->join('class', 'evaluations.class_id', '=', 'class.class_id')
-          ->join('subject', 'class.subject_id', '=', 'subject.subject_id')
-               ->join('teacher', 'class.teacher_id', '=', 'teacher.teacher_id')
-          ->where([
-              ['evaluations.evaluation_id', '=', $evaluationId],
-          ])
-           ->select('subject.subject_name','teacher.teacher_name','class.semester')
-            ->first();
-            // dd($teacherAndClass);
+              ->join('subject', 'class.subject_id', '=', 'subject.subject_id')
+              ->join('teacher', 'class.teacher_id', '=', 'teacher.teacher_id')
+              ->where([
+                       ['evaluations.evaluation_id', '=', $evaluationId],
+                        ])
+              ->select('subject.subject_name','teacher.teacher_name','class.semester')
+              ->first();
         
         // $subject = \App\Model\Subject::find($req->id);
-        // var_dump( $subject);
         $questions  = DB::table('question')
        ->where('question.status', '=','1')
        ->get();
@@ -58,7 +56,6 @@ class EvaluationController extends Controller
         $question  = DB::table('question')
        ->where('question.status', '=','1')
        ->get();
-
 
        $checkError = false;
         for($i = 0; $i <count($question); $i++){

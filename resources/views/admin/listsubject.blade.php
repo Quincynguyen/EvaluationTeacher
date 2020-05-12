@@ -20,10 +20,12 @@
   		</tr>
   	</thead>
   	<tbody>
-  		@foreach($subject as $data)
+      <?php  $i = 0  ?>
+      @foreach($subject as $data)
+      <?php  $i++  ?>
   		<tr style="color: black;">
   			
-  			<td>{{$data->subject_id}}</td>
+  			<td>{{$i}}</td>
   			<td>{{$data->subject_code}}</td>
   			<td>{{$data->subject_name}}</td>
   			<td><a class ="btn btn-info" href="{{route('admin-class',['id'=>$data->subject_id])}}">Danh sách lớp học</a></td>

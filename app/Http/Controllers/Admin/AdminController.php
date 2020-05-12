@@ -52,7 +52,7 @@ class AdminController extends Controller
              'total_student' => 0,
              'percentStudentIsFeedback' => 0
         );
-// doan nay la gi y nhi, khoi tao 1 mang 2 phan tu doan nay ung vs id =0 
+//  khoi tao 1 mang 2 phan tu doan nay ung vs id =0 
        $array[] = ['Mo ta', 'Number'];
  
 
@@ -62,8 +62,8 @@ class AdminController extends Controller
 
 
 
-          $array[1] =   ['Da danh gia', $total_student_is_feedback];
-          $array[2] =   ['Chua danh gia', $total_student -  $total_student_is_feedback];
+          $array[1] =   ['Đã đánh giá', $total_student_is_feedback];
+          $array[2] =   ['Chưa đánh giá', $total_student -  $total_student_is_feedback];
 
           //  $percentStudentIsFeedback = $total_student_is_feedback/$total_student;
 

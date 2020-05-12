@@ -24,12 +24,13 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
 		Route::get('/getAllTeacherPoint', 'ListTeacherController@getAllTeacherPoint');
 		Route::get('/getALlTypePoint', 'ListTeacherController@getALlTypePoint');
   //Import Data
-	Route::get('/import_excel', 'ImportExcelController@getViewImportUsers')->name('admin-importusers');
+	Route::get('/import_excel', 'ImportExcelController@getViewImportUsers')->name('admin-import');
    Route::post('/import_excel/import', 'ImportExcelController@getImportUsers')->name('admin-importusers');
    Route::post('/import_excel/import1', 'ImportExcelController@getImportSubject')->name('admin-importsubject');
    Route::post('/import_excel/import2', 'ImportExcelController@getImportUsersFaculty')->name('admin-importusersfaculty');
    Route::post('/import_excel/import3', 'ImportExcelController@getImportFaculty')->name('admin-importfaculty');
    Route::post('/import_excel/import4', 'ImportExcelController@getImportTeacher')->name('admin-importteacher');
+   Route::post('/import_excel/import5', 'ImportExcelController@getImportClass')->name('admin-importclass');
   // }); 
  	
 });

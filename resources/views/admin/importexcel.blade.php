@@ -23,10 +23,10 @@
 </ul>
 </div>
 @endif
-<h3 align="center" style="font-style: all;color: #4e73df">Thêm dữ liệu</h3>
+<h3 align="center" style="font-style: bold;color: #000;font-family:arial ">THÊM DỮ LIỆU</h3><br><br>
 
-<div class="row">
-  <div class="col-md-6">
+<div class="row" >
+  <div class="col-md-6" style="border-right: solid 3px black;">
     <form method="post" enctype="multipart/form-data" action="{{route('admin-importusers')}}">
       {{ csrf_field() }}
       <div class="form-group">
@@ -45,7 +45,6 @@
 
 <!-- import môn học -->
 
-<div class="row">
   <div class="col-md-6">
     <form method="post" enctype="multipart/form-data" action="{{route('admin-importsubject')}}">
       {{ csrf_field() }}
@@ -62,9 +61,11 @@
     </div>
   </form>
 </div>
+</div>
+
 <!-- import user-facuty -->
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6" style="border-right: solid 3px black;">
     <form method="post" enctype="multipart/form-data" action="{{route('admin-importusersfaculty')}}">
       {{ csrf_field() }}
       <div class="form-group">
@@ -81,7 +82,6 @@
   </form>
 </div>
 <!-- import faculty -->
-<div class="row">
   <div class="col-md-6">
     <form method="post" enctype="multipart/form-data" action="{{route('admin-importfaculty')}}">
       {{ csrf_field() }}
@@ -98,9 +98,10 @@
     </div>
   </form>
 </div>
+</div>
 <!-- import teacher -->
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6" style="border-right: solid 3px black;">
     <form method="post" enctype="multipart/form-data" action="{{route('admin-importteacher')}}">
       {{ csrf_field() }}
       <div class="form-group">
@@ -115,5 +116,23 @@
       </table>
     </div>
   </form>
+</div>
+<!-- import class -->
+  <div class="col-md-6">
+    <form method="post" enctype="multipart/form-data" action="{{route('admin-importclass')}}">
+      {{ csrf_field() }}
+      <div class="form-group">
+       <table class="table">
+        <tr>
+          <td width="0">
+            <input type="file" name="select_class" /><br><br>
+            <span> <p style="color: red;">* chỉ những file có định dạng .xls, .xslx</p></span>
+            <input type="submit" name="upload-class" class="btn btn-primary" value="Lớp">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
 </div>
 @endsection

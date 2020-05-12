@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `evaluation2`
+-- Database: `evaluation`
 --
 
 -- --------------------------------------------------------
@@ -280,12 +280,6 @@ CREATE TABLE `users_faculty` (
   `status` int(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `users_faculty`
---
-
-INSERT INTO `users_faculty` (`user_id`, `faculty_id`, `status`) VALUES
-(7, 2, 1);
 
 --
 -- Indexes for dumped tables

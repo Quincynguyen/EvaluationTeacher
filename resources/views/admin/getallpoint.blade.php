@@ -56,22 +56,23 @@ function builderTable(result){
    output.innerHTML += tableContent;
 }
 </script>
-
+<h3 align="center" style="color: #224abe ">Danh sách Thống kê điểm xếp loại của Giảng viên</h3><br />
 <select id="sel" >
    <option id="0"  value="0">-ALL-</option>
    @foreach($faculty as $data)
    <option id="{{$data->faculty_id}}"  value="{{$data->faculty_id}}">{{$data->faculty_name}}</option>
    @endforeach
    
-</select>
-<table class="table table-hover">
+</select><br><br>
+
+<table class="table table-bordered">
 	<thead>
-		<tr>
+		<tr style="background-color: #4e73df;color: #FFF">
 			<th>STT</th>
 			<th>Tên giáo viên</th>
 			<th>Khoa</th>
-			<th>Diem</th>
-			<th>Loai</th>
+			<th>Điểm Đánh giá</th>
+			<th>Xếp Loại</th>
 		</tr>
 	</thead>
 	<tbody id ="body_table">

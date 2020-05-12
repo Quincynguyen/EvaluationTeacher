@@ -17,9 +17,6 @@ class HomeController extends Controller
     	$this->middleware('auth',['except'=>'getLogout']);
     }
     public function getIndex() {
-
-
-  
      $now = Carbon\Carbon::now('Asia/Ho_Chi_Minh');
       $year = $now->year;
       $month = $now->month;
@@ -35,10 +32,8 @@ class HomeController extends Controller
         foreach ($semestersByOptionType as $value) {
          
           if ($value->option_code  == 'HK1') {
-            # code...
             $semester1 = $value->option_value;
           }if ($value->option_code  == 'HK2') {
-            # code...
             $semester2 = $value->option_value;
           }
        }
@@ -64,7 +59,6 @@ class HomeController extends Controller
            $resultSemester = ($year -1).'HK1';
         }
       }
-      
 
       $subject = DB::table('evaluations')
               ->join('class', 'evaluations.class_id', '=', 'class.class_id')

@@ -12,9 +12,11 @@
  		</tr>
  	</thead>
  	<tbody>
- 		 @foreach($class as $data)
+ 		<?php  $i = 0  ?>
+		@foreach($class as $data)
+		<?php  $i++  ?>
  		<tr style="color: black;">
- 			<td>{{$data->class_id}}</td>
+ 			<td>{{$i}}</td>
  			<td>{{$data->class_code}}</td>
  			<td>{{$data->subject_name}}</td>
  			<td>{{$data->teacher_name}}</td>

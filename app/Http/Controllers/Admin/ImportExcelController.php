@@ -89,14 +89,14 @@ namespace App\Http\Controllers\Admin;
                foreach($data as $row)
                {
                     $insert_data[] = array(
-                     'subject_code'  => $row['subject_code'],
-                     'subject_name'   => $row['subject_name'],
+                     'user_id'  => $row['user_id'],
+                     'faculty_id'   => $row['faculty_id'],
                    );
                 }
     
            if(!empty($insert_data))
            {
-             DB::table('subject')->insert($insert_data);
+             DB::table('users_faculty')->insert($insert_data);
            }
      return back()->with('success', 'Thêm mới thành công!');
     }
@@ -123,7 +123,9 @@ namespace App\Http\Controllers\Admin;
            }
      return back()->with('success', 'Thêm mới thành công!');
     }
-     public function getImportTeacher(Request $request)
+
+    // Import Teacher 
+    public function getImportTeacher(Request $request)
     {
       $this->validate($request, [
       'select_teacher'  => 'required|mimes:xls,xlsx'
@@ -143,6 +145,32 @@ namespace App\Http\Controllers\Admin;
            if(!empty($insert_data))
            {
              DB::table('teacher')->insert($insert_data);
+           }
+     return back()->with('success', 'Thêm mới thành công!');
+    }
+    //Import Class
+    public function getImportClass(Request $request)
+    {
+      $this->validate($request, [
+      'select_class'  => 'required|mimes:xls,xlsx'
+    ]);
+            $path = $request->select_class->getRealPath();
+           
+
+            $data = Excel::load($path)->get();
+               foreach($data as $row)
+               {
+                    $insert_data[] = array(
+                     'class_code'  => $row['class_code'],
+                     'subject_id'   => $row['subject_id'],
+                     'teacher_id'   => $row['teacher_id'],
+                     'semester'   => $row['semester'],
+                   );
+                }
+    
+           if(!empty($insert_data))
+           {
+             DB::table('class')->insert($insert_data);
            }
      return back()->with('success', 'Thêm mới thành công!');
     }
