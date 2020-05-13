@@ -68,7 +68,7 @@
 	</form>
 		
 	</div>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		function validate() {
 			var form = document.forms["feedback"];
 			var count = 0;
@@ -81,6 +81,6 @@
 				return false;
 			}
 		}
-	</script>
+	</script> -->
 @endsection
 	

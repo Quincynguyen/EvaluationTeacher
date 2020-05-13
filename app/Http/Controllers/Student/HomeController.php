@@ -174,6 +174,10 @@ class HomeController extends Controller
       $listquestion = DB::table('question')->get();
       return view('student.listquestion')->with('listquestion',$listquestion); 
   }
+  public function getStudentGuide()
+  {
+    return view('student.studentguide');
+  }
 
   // SELECT us.users_id,s.subject_id,s.subject_code,s.subject_name,us.semester FROM users_subject as us inner join subject as s on us.subject_id = s.subject_id WHERE users_id = 1 and us.semester = '2019HK1'
 }

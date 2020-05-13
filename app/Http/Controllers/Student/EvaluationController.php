@@ -23,10 +23,8 @@ class EvaluationController extends Controller
     {
         
       
-        $evaluationId = $req->id;
-     
-
-     $teacherAndClass = DB::table('evaluations')
+      $evaluationId = $req->id;
+      $teacherAndClass = DB::table('evaluations')
               ->join('class', 'evaluations.class_id', '=', 'class.class_id')
               ->join('subject', 'class.subject_id', '=', 'subject.subject_id')
               ->join('teacher', 'class.teacher_id', '=', 'teacher.teacher_id')
@@ -51,8 +49,6 @@ class EvaluationController extends Controller
     }
     public function postFormEvaluation( Request $req)
     {
-
-
         $question  = DB::table('question')
        ->where('question.status', '=','1')
        ->get();
@@ -78,9 +74,10 @@ class EvaluationController extends Controller
             //  note get form , created_at now, total_point = sum answer
         
           $answerResutl = 0;
-          $finalArray = array();
-          $questionID  = 0;
-          $total_point = 0;
+          $finalArray   = array();
+          $questionID   = 0;
+          $total_point  = 0;
+          $status       = 1;
           $eId = $req->id;
            for($i = 0; $i <count($question); $i++){
             $answerResutl = $req->$i;
@@ -88,20 +85,17 @@ class EvaluationController extends Controller
             $total_point += $answerResutl;
               array_push($finalArray, array(
                 'evaluations_detail_id'=>null, 
-                  'evaluation_id'=>$req->id, 
+                'evaluation_id'=>$req->id, 
                 'question_id'=>$questionID,
                 'answer_id'=>$answerResutl
             
                 ));
            }
 
-          
-
-           $sql = 'UPDATE evaluations SET total_point = '.$total_point.', note = '.'"'.$req->note.'"'.' WHERE evaluation_id = '.$eId.';' ; 
+          $sql = 'UPDATE evaluations SET  status_feedback = '.$status.' , total_point = '.$total_point.', note = '.'"'.$req->note.'"'.' WHERE evaluation_id = '.$eId.';' ; 
           DB::select($sql, array(1));
 
-
-           EvaluationDetail::insert($finalArray);
+          EvaluationDetail::insert($finalArray);
           return redirect()->route('home')->with('success','Cảm ơn bạn đã đánh giá');
            //  success
 

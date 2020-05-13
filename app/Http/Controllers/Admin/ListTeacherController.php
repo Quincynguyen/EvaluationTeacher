@@ -29,7 +29,7 @@ class ListTeacherController extends Controller
        subject_code, 
        subject_name, 
        Sum(phan_tram) / ( Count(id) * 100 ) AS total 
-FROM   (SELECT e.class_id 
+       FROM   (SELECT e.class_id 
                AS id, 
                c.class_code 
                AS 
@@ -144,17 +144,15 @@ FROM   (SELECT c.teacher_id as teacher_id ,
            if($results != null && count($results) > 0 ){
               $sql2 = 'SELECT * FROM option_set WHERE option_type = "POINT" ORDER BY option_value ';
 		      $optionset = DB::select($sql2, array(1));
-			if($optionset != null && count($optionset) > 0 )
+			    if($optionset != null && count($optionset) > 0 )
 		      for ($i=0; $i <count($results) ; $i++) { 
 		      	    $item = $results[$i];
 		      	    $point = $item->total_final *100 ;
-		      	# code...
 		      	for ($j=0; $j <count($optionset) ; $j++) { 
 		      		$op = $optionset[$j];
 		      		if($point >= $op->option_value ){
 		      			$item->type = $op->option_code;
 		      		}
-		      		# code...
 		      	}
 		      }
            }

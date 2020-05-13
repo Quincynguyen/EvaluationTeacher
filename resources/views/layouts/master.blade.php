@@ -11,8 +11,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body >
-<div style ="background-image: url('{{ asset('student/bg-head.png') }}');" class ="row">
-		<img style ="padding-left: 100px; height: 130px;" src="{{ asset('student/logo.jpg') }}">
+<a href="https://hnue.edu.vn/"><div style ="background-image: url('{{ asset('student/bg-head.png') }}');" class ="row"></a>
+		<a href="https://hnue.edu.vn/"><img style ="padding-left: 100px; height: 130px;" src="{{ asset('student/logo.jpg') }}"></a>
 	</div>
 	<div class ="row header">
 		<ul style="">
@@ -28,7 +28,7 @@
 						<li><a  href="{{route('logout')}}">Đăng xuất</a></li>
 					</ul>
 				</li>
-	      <li style=" float:left;padding-left: 160px;padding-top: 15px;"><a style="color:#FFF;" href="#"><i class="fas fa-book-reader"></i>  HƯỚNG DẪN ĐĂNG KÝ ĐÁNH GIÁ</a></li>
+	      <li style=" float:left;padding-left: 160px;padding-top: 15px;"><a style="color:#FFF;" href="{{route('student-guide')}}"><i class="fas fa-book-reader"></i>  HƯỚNG DẪN ĐĂNG KÝ ĐÁNH GIÁ</a></li>
 	      
    		 </ul>
 	</div>

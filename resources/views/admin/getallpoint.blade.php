@@ -75,7 +75,7 @@ function builderTable(result){
 			<th>Xếp Loại</th>
 		</tr>
 	</thead>
-	<tbody id ="body_table">
+	<tbody  style ="color: black;" id ="body_table">
 		
 		
 	</tbody>

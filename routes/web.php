@@ -23,6 +23,7 @@ Route::namespace('Student')->prefix('student')->group(function () {
 	Route::post('/home', 'HomeController@postSubject')->name('post-subject');
 	Route::get('/evaluation', 'EvaluationController@getFormEvaluation')->name('form-evaluation');
 	Route::post('/evaluation', 'EvaluationController@postFormEvaluation')->name('form-evaluation');
+	Route::get('/guide', 'HomeController@getStudentGuide')->name('student-guide');
 	// Route::get('', 'EvaluationController@getFormEvaluation')->name('post-subject1');
   }); 
  	
